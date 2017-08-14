@@ -8,7 +8,8 @@
   "scripts": {
     "dev": "NODE_PATH=./lib pm2 start lib/server.js --watch --interpreter babel-node",
     "webpack": "webpack -wd",
-    "test": "jest --watch"
+    "test": "jest --watch",
+    "update-snapshot": "jest --updateSnapshot"
   },
   "babel": {
     "presets": [
@@ -19,6 +20,7 @@
   },
   "devDependencies": {
     "babel-eslint": "^7.2.3",
+    "enzyme": "^2.9.1",
     "eslint": "^4.3.0",
     "eslint-plugin-react": "^7.1.0",
     "jest": "^20.0.4",
@@ -35,6 +37,7 @@
     "ejs": "^2.5.7",
     "express": "^4.15.3",
     "pm2": "^2.6.1",
+    "prop-types": "^15.5.10",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "webpack": "^3.4.1"
