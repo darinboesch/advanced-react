@@ -6,16 +6,23 @@
   "author": "Darin",
   "license": "MIT",
   "scripts": {
-    "dev": "NODE_PATH=./lib pm2 start lib/server.js --watch --interpreter babel-node",
+    "dev": "NODE_PATH=./lib pm2 start lib/server.js --watch --interpreter babel-node --name appDev",
     "webpack": "webpack -wd",
     "test": "jest --watch",
-    "update-snapshot": "jest --updateSnapshot"
+    "verify-tests": "jest --coverage",
+    "update-snapshot": "jest --updateSnapshot",
+    "build-webpack": "webpack -p",
+    "build-node": "babel lib -d build --copy-files",
+    "start-prod": "NODE_ENV=production NODE_PATH=./build pm2 start build/server.js -i max --name appProd"
   },
   "babel": {
     "presets": [
       "react",
-      "env",
-      "stage-2"
+      ["env", { "targets": { "node": "current" } }]
+    ],
+    "plugins": [
+      "transform-class-properties",
+      "transform-object-rest-spread"
     ]
   },
   "devDependencies": {
